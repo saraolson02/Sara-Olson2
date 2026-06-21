@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sara Olson — Marketing & Project Management</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF6F1;
+      --sand: #EFE8DC;
+      --warm-brown: #7C5C3E;
+      --deep-brown: #3D2B1F;
+      --terracotta: #C4714A;
+      --sage: #8A9E7E;
+      --text: #2E1F14;
+      --text-muted: #8A7060;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 4rem;
+      background: rgba(250, 246, 241, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--sand);
+    }
+
+    .nav-logo {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      color: var(--deep-brown);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--terracotta); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 4rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -10%;
+      right: -5%;
+      width: 55%;
+      height: 120%;
+      background: radial-gradient(ellipse at center, var(--sand) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-family: 'Lora', serif;
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      font-weight: 600;
+      line-height: 1.15;
+      color: var(--deep-brown);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-text h1 em {
+      font-style: italic;
+      color: var(--terracotta);
+    }
+
+    .hero-text p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 440px;
+      margin-bottom: 2.2rem;
+      font-weight: 300;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--terracotta);
+      color: white;
+      padding: 0.85rem 2rem;
+      border-radius: 2px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover { background: var(--warm-brown); transform: translateY(-1px); }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--warm-brown);
+      padding: 0.85rem 2rem;
+      border-radius: 2px;
+      border: 1.5px solid var(--warm-brown);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn-secondary:hover { background: var(--warm-brown); color: white; }
+
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .avatar-ring {
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      border: 4px solid var(--sand);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: 0 8px 40px rgba(61,43,31,0.13);
+    }
+
+    .avatar-ring img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: var(--sand);
+      color: var(--warm-brown);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 2px;
+      margin-bottom: 1.2rem;
+    }
+
+    /* SECTIONS */
+    section { padding: 6rem 4rem; }
+
+    .section-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-family: 'Lora', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 600;
+      color: var(--deep-brown);
+      margin-bottom: 2.5rem;
+      line-height: 1.25;
+    }
+
+    /* ABOUT */
+    #about { background: white; }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-body p {
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+      font-size: 1.05rem;
+      font-weight: 300;
+    }
+
+    .about-body p strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .about-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .stat-card {
+      background: var(--cream);
+      padding: 1.6rem 2rem;
+      border-left: 3px solid var(--terracotta);
+    }
+
+    .stat-num {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: var(--terracotta);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .stat-label {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    /* EXPERIENCE */
+    #experience { background: var(--cream); }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 2rem;
+      position: relative;
+      padding-bottom: 3rem;
+    }
+
+    .timeline-item:last-child { padding-bottom: 0; }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 158px;
+      top: 8px;
+      bottom: 0;
+      width: 1px;
+      background: var(--sand);
+    }
+
+    .timeline-item:last-child::before { display: none; }
+
+    .timeline-dot {
+      position: absolute;
+      left: 152px;
+      top: 6px;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: var(--terracotta);
+      border: 2px solid var(--cream);
+    }
+
+    .timeline-date {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      padding-top: 4px;
+      text-align: right;
+    }
+
+    .timeline-content { padding-left: 1.5rem; }
+
+    .timeline-role {
+      font-family: 'Lora', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--deep-brown);
+      margin-bottom: 0.2rem;
+    }
+
+    .timeline-company {
+      font-size: 0.88rem;
+      color: var(--terracotta);
+      font-weight: 500;
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.02em;
+    }
+
+    .timeline-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-weight: 300;
+      line-height: 1.75;
+    }
+
+    .timeline-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 0.6rem;
+    }
+
+    .timeline-bullets li {
+      font-size: 0.93rem;
+      color: var(--text-muted);
+      font-weight: 300;
+      line-height: 1.65;
+      padding-left: 1.1rem;
+      position: relative;
+    }
+
+    .timeline-bullets li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--terracotta);
+    }
+
+    /* PROJECTS */
+    #projects { background: white; }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+    }
+
+    .project-card {
+      background: var(--cream);
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+
+    .project-card:hover { transform: translateY(-3px); }
+
+    .project-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--terracotta);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+
+    .project-card:hover::after { transform: scaleX(1); }
+
+    .project-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: var(--sage);
+      margin-bottom: 0.8rem;
+    }
+
+    .project-title {
+      font-family: 'Lora', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--deep-brown);
+      margin-bottom: 0.8rem;
+      line-height: 1.3;
+    }
+
+    .project-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* SKILLS */
+    #skills { background: var(--deep-brown); }
+
+    #skills .section-label { color: var(--sand); opacity: 0.6; }
+    #skills .section-title { color: var(--cream); }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .skill-group-title {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: var(--terracotta);
+      margin-bottom: 1.2rem;
+    }
+
+    .skill-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .skill-list li {
+      font-size: 0.95rem;
+      color: rgba(250,246,241,0.75);
+      font-weight: 300;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .skill-list li::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--terracotta);
+      flex-shrink: 0;
+    }
+
+    .cert-row {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .cert-badge {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(196,113,74,0.4);
+      color: rgba(250,246,241,0.7);
+      font-size: 0.8rem;
+      font-weight: 400;
+      padding: 0.45rem 1rem;
+      border-radius: 2px;
+      letter-spacing: 0.02em;
+    }
+
+    /* CONTACT */
+    #contact { background: var(--cream); }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contact-text p {
+      color: var(--text-muted);
+      font-weight: 300;
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .contact-link:hover { color: var(--terracotta); }
+
+    .contact-link-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--sand);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-group label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      background: white;
+      border: 1.5px solid var(--sand);
+      padding: 0.85rem 1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text);
+      outline: none;
+      border-radius: 2px;
+      transition: border-color 0.2s;
+      resize: vertical;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: var(--terracotta); }
+
+    .form-group textarea { min-height: 120px; }
+
+    .form-submit {
+      background: var(--terracotta);
+      color: white;
+      border: none;
+      padding: 0.9rem 2rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: background 0.2s;
+      align-self: flex-start;
+    }
+
+    .form-submit:hover { background: var(--warm-brown); }
+
+    footer {
+      background: var(--deep-brown);
+      color: rgba(250,246,241,0.4);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.82rem;
+      letter-spacing: 0.03em;
+    }
+
+    @media (max-width: 860px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      section { padding: 4rem 1.5rem; }
+      .hero { padding: 6rem 1.5rem 4rem; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .timeline-item { grid-template-columns: 1fr; }
+      .timeline-date { text-align: left; }
+      .timeline-item::before, .timeline-dot { display: none; }
+      .timeline-content { padding-left: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Sara Olson</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <span class="hero-tag">Open to new opportunities · Austin, TX</span>
+        <h1>Marketing meets <em>momentum.</em></h1>
+        <p>I'm Sara — an MBA-trained marketer and project manager who's kept 30-person travel rosters on schedule, launched multi-channel social campaigns, and made game-day chaos look effortless. Ready for my next challenge.</p>
+        <div class="hero-cta">
+          <a href="#experience" class="btn-primary">See my work</a>
+          <a href="#contact" class="btn-secondary">Get in touch</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="avatar-ring">
+          <img src="headshot.jpg" alt="Sara Olson" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-body">
+          <p class="section-label">About me</p>
+          <h2 class="section-title">Organized by nature,<br/>creative by choice.</h2>
+          <p>I thrive at the intersection of <strong>strategy and execution</strong> — where a good plan meets the real world and someone has to make sure it actually lands. Whether it's wrangling logistics for a 30-person road trip, coordinating a remote social media team, or keeping coaches, athletes, and university administration all on the same page, I'm the person who makes sure nothing falls through the cracks.</p>
+          <p>I recently completed my MBA at St. Edward's University (GPA 3.83), and I'm channeling that into marketing project management — roles where brand growth, relationship building, and digital marketing come together to create something real.</p>
+          <p>I hold HubSpot certifications in Social Media Marketing and Marketing Software, and I've built tracking systems, run campaigns end-to-end, and learned how to use data to make better calls on the next project.</p>
+        </div>
+        <div class="about-stats">
+          <div class="stat-card">
+            <div class="stat-num">3.83</div>
+            <div class="stat-label">MBA GPA, St. Edward's University — May 2026</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">30+</div>
+            <div class="stat-label">People coordinated across 15+ away trips — flights, hotels, meals, and zero meltdowns</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">5</div>
+            <div class="stat-label">Social media campaigns led end-to-end at Black Sheep, managing distributed remote teams</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-inner">
+      <p class="section-label">Where I've been</p>
+      <h2 class="section-title">Experience</h2>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-date">Aug 2024 – Present</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-role">Graduate Assistant – Operations & Marketing</div>
+            <div class="timeline-company">St. Edward's University Women's Basketball · Austin, TX</div>
+            <ul class="timeline-bullets">
+              <li>Run day-to-day operations for a 20-person Division II program — scheduling, game day logistics, equipment, and all the coordination that keeps a team and a season functioning as a one-person ops and marketing department.</li>
+              <li>Managed end-to-end travel logistics for 30+ people across 15+ away trips: flights, hotels, meals, and ground transportation, staying on top of timelines and vendor coordination through constant last-minute changes.</li>
+              <li>Serve as the main communication bridge between coaches, athletes, athletic staff, and university administration — managing competing priorities so nothing slips through the cracks.</li>
+              <li>Plan and execute game day event experiences from the ground up: venue setup, run-of-show, vendor coordination, and on-site problem-solving to ensure everything reflects the program's brand and runs on schedule.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">Mar 2023 – Jan 2024</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-role">NIL & Staffing Assistant</div>
+            <div class="timeline-company">Black Sheep · Remote</div>
+            <ul class="timeline-bullets">
+              <li>Managed relationships between 10+ athletes and brand partners for NIL deals, bridging both sides to find the match that actually made sense for each campaign.</li>
+              <li>Led 5 social media campaigns end-to-end: scoping deliverables, coordinating distributed remote teams, managing deadlines, and keeping final output true to the brief.</li>
+              <li>Built and maintained tracking systems in Google Sheets and project management tools to keep campaign logistics, staffing, and event timelines organized across multiple simultaneous workstreams.</li>
+              <li>Monitored campaign performance and translated data into actionable adjustments, building the habit of using analytics to make better calls on the next project.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2026</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-role">Shadowing – Associate Director of Communications</div>
+            <div class="timeline-company">University of Texas Athletics · Austin, TX</div>
+            <ul class="timeline-bullets">
+              <li>Observed and contributed to Division I communications operations during the WBB Texas vs. Oklahoma game — one of the highest-profile media events in college basketball.</li>
+              <li>Assisted with press conference coordination, media credentialing, and postgame workflow management across multiple stakeholders under tight deadlines.</li>
+              <li>Drafted press releases and media materials, sharpening instincts for audience-aware writing and narrative shaping.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-inner">
+      <p class="section-label">What I've built</p>
+      <h2 class="section-title">Projects & Portfolio</h2>
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <div class="project-tag">Operations & Logistics</div>
+          <div class="project-title">Season-Long Travel Program, St. Edward's WBB</div>
+          <div class="project-desc">Planned and executed travel for a 30-person Division II basketball program across an entire season — 15+ away trips with zero margin for error. Coordinated flights, hotels, meals, and ground transport while managing vendor relationships and real-time changes throughout.</div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-tag">Campaign Management</div>
+          <div class="project-title">NIL Social Media Campaigns, Black Sheep</div>
+          <div class="project-desc">Led 5 social media campaigns from brief to delivery for athlete-brand NIL partnerships. Scoped deliverables, coordinated a distributed remote team, tracked performance, and translated analytics into improvements for the next activation.</div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-tag">MBA Consulting</div>
+          <div class="project-title">MBA Consulting Capstone</div>
+          <div class="project-desc">Completed a real-client consulting engagement as part of St. Edward's MBA Capstone — applying marketing strategy, operations planning, and stakeholder communication in a live business context. Details available on request.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-inner">
+      <p class="section-label">What I bring</p>
+      <h2 class="section-title">Skills & Tools</h2>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <div class="skill-group-title">Project Management</div>
+          <ul class="skill-list">
+            <li>Campaign planning & execution</li>
+            <li>Cross-functional coordination</li>
+            <li>Timeline & budget oversight</li>
+            <li>Stakeholder communication</li>
+            <li>Event & logistics management</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Marketing</div>
+          <ul class="skill-list">
+            <li>Social media marketing</li>
+            <li>Brand messaging & storytelling</li>
+            <li>Content strategy</li>
+            <li>Digital marketing analytics</li>
+            <li>Go-to-market strategy</li>
+            <li>Communications & media relations</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Tools & Software</div>
+          <ul class="skill-list">
+            <li>HubSpot CRM & Marketing Software</li>
+            <li>Google Sheets & project tracking</li>
+            <li>Google Analytics</li>
+            <li>Microsoft Office Suite</li>
+            <li>Social media platforms & scheduling</li>
+          </ul>
+        </div>
+      </div>
+      <div class="cert-row">
+        <span class="cert-badge">✓ HubSpot Social Media Marketing Certified</span>
+        <span class="cert-badge">✓ HubSpot Marketing Software Certified</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <div class="contact-inner">
+        <div class="contact-text">
+          <p class="section-label">Say hello</p>
+          <h2 class="section-title">Let's work together.</h2>
+          <p>I'm actively looking for Campaign Coordinator, Project Manager, Traffic Manager, and Account Coordinator roles at marketing agencies in Austin. If you're hiring — or just want to connect — I'd love to hear from you.</p>
+          <div class="contact-links">
+            <a href="mailto:saraolson02@gmail.com" class="contact-link">
+              <div class="contact-link-icon">✉</div>
+              saraolson02@gmail.com
+            </a>
+            <a href="tel:5127340691" class="contact-link">
+              <div class="contact-link-icon">#</div>
+              512-734-0691
+            </a>
+            <a href="https://linkedin.com/in/saraolson02" class="contact-link" target="_blank" rel="noopener">
+              <div class="contact-link-icon">in</div>
+              linkedin.com/in/saraolson02
+            </a>
+          </div>
+        </div>
+        <div class="contact-form">
+          <div class="form-group">
+            <label for="name">Your name</label>
+            <input type="text" id="name" placeholder="Jane Smith" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="jane@agency.com" />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" placeholder="Tell me about the role or just say hi..."></textarea>
+          </div>
+          <button class="form-submit" onclick="alert('Thanks for reaching out — Sara will be in touch soon!')">Send message</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Sara Olson · Austin, TX · Built with intention.</p>
+  </footer>
+
+</body>
+</html>
